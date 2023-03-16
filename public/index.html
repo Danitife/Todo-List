@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Document</title>
+</head>
+<body>
+  <main class="flex justify-between">
+    <h1>Welcome to my first firebase Website <span id="name"></span></h1>
+    <button onclick="logout()" class="bg-red-400">Logout</button>
+  </main>
+</body>
+</html>
+
+<script>
+  let current_user = JSON.parse(localStorage.getItem("current_user"))
+  console.log(current_user);
+  if(!current_user){
+    window.location.href = "login.html"
+  }
+  document.getElementById("name").innerHTML =  " "+ current_user.username
+  function logout(){
+    localStorage.removeItem("current_user")
+    window.location.href = "login.html"
+  }
+</script>
